@@ -1,0 +1,13 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": { "text": "Cheapest European cities" },
+  "data": {
+    "format": { "type": "csv" },
+    "url": "atlas-visualisation/Environment_Temperature_change_E_All_Data_NOFLAG.csv"
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "Area", "type": "nominal" },
+    "y": { "field": "Y1961", "type": "quantitative" }
+  }
+}
