@@ -30,7 +30,7 @@ const Graphs = () => {
       <div id="line_chart" />
       <div id="bar_chart" className={"overflow-auto w-screen"} />
       <br />
-      <div id="chloropleth" className={"left"} />;
+      <div id="chloropleth" className={"left"} />
     </div>
   );
 };
