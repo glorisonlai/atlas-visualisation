@@ -12,7 +12,12 @@
     {
       "name": "YearFilter",
       "value": 1961,
-      "bind": { "input": "range", "min": 1961, "max": 2019, "step": 1 }
+      "bind": {
+        "input": "range",
+        "min": 1961,
+        "max": 2019,
+        "step": 1
+      }
     }
   ],
   "mark": { "type": "geoshape" },
@@ -25,6 +30,7 @@
         },
         "key": "Area",
         "fields": [
+          "Months Code",
           "Y1961",
           "Y1962",
           "Y1963",
@@ -87,7 +93,6 @@
         ]
       }
     },
-    { "filter": { "field": "Area", "equal": "World" } },
     { "filter": { "field": "Months Code", "equal": "7020" } },
     {
       "fold": [
@@ -154,23 +159,25 @@
       "as": ["YearStr", "Change"]
     },
     {
-      "calculate": "parseInt(substring(YearStr, 1))",
+      "calculate": "parseInt(substring(datum.YearStr, 1))",
       "as": "Year"
-    },
-    { "filter": { "field": "Year", "equal": "YearFilter" } }
+    }
   ],
 
   "encoding": {
     "color": {
-      "field": "Y1961",
+      "condition": {
+        "test": { "not": "datum.Year == YearFilter" },
+        "value": "clear"
+      },
+      "field": "Change",
+      "title": "Degrees",
       "type": "quantitative",
       "scale": {
-        "type": "threshold",
-        "domain": [-2, -1, 0, 1, 2, 3, 4],
+        "type": "linear",
+        "domain": [-1, 3],
         "range": [
           "#9aedff",
-          "#d8ffd8",
-          "#ffffff",
           "#ffff4a",
           "#ffcd00",
           "#ff7f00",
@@ -181,7 +188,7 @@
     },
     "tooltip": [
       { "field": "properties.NAME", "type": "nominal", "title": "Country" },
-      { "field": "Y1961", "type": "quantitative" }
+      { "field": "Change", "type": "quantitative" }
     ]
   }
 }
