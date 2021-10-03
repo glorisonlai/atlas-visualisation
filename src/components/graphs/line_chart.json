@@ -1,12 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 800,
-  "title": { "text": "Temperature fluctuation over time" },
+  "width": 1000,
+  "title": "Yearly Temperature Fluctuation",
   "data": {
     "format": { "type": "csv" },
-    "url": "atlas-visualisation/Environment_Temperature_change_E_All_Data.csv"
+    "url": "atlas-visualisation/Environment_Temperature_change_E_All_Data_Cleaned.csv"
   },
-  "mark": "line",
   "transform": [
     { "filter": { "field": "Area", "equal": "World" } },
     { "filter": { "field": "Months Code", "equal": "7020" } },
@@ -73,10 +72,40 @@
         "Y2019"
       ],
       "as": ["Year", "Change"]
+    },
+    {
+      "pivot": "Element Code",
+      "groupby": ["Year"],
+      "value": "Change"
+    },
+    {
+      "calculate": "datum['7271'] - datum['6078']",
+      "as": "tempLo"
+    },
+    {
+      "calculate": "datum['7271'] + datum['6078']",
+      "as": "tempHi"
     }
   ],
   "encoding": {
-    "x": { "field": "Year", "type": "nominal" },
-    "y": { "field": "Change", "type": "quantitative" }
-  }
+    "x": { "field": "Year", "type": "nominal" }
+  },
+  "layer": [
+    {
+      "mark": { "type": "area", "opacity": 0.3, "color": "#85C5A6" },
+      "encoding": {
+        "y": { "field": "tempHi" },
+        "y2": { "field": "tempLo" }
+      }
+    },
+    {
+      "mark": { "type": "line" },
+      "encoding": {
+        "y": {
+          "aggregate": "average",
+          "field": "7271"
+        }
+      }
+    }
+  ]
 }

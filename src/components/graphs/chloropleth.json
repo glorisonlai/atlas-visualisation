@@ -26,7 +26,7 @@
       "lookup": "properties.NAME",
       "from": {
         "data": {
-          "url": "atlas-visualisation/Environment_Temperature_change_E_All_Data_NOFLAG.csv"
+          "url": "atlas-visualisation/Environment_Temperature_change_E_All_Data_Cleaned.csv"
         },
         "key": "Area",
         "fields": [
