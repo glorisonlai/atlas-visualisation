@@ -1,23 +1,22 @@
 {
   "files": {
-    "main.css": "/atlas-visualisation/static/css/main.a617e044.chunk.css",
-    "main.js": "/atlas-visualisation/static/js/main.1e992b97.chunk.js",
-    "main.js.map": "/atlas-visualisation/static/js/main.1e992b97.chunk.js.map",
-    "runtime-main.js": "/atlas-visualisation/static/js/runtime-main.edd15b1b.js",
-    "runtime-main.js.map": "/atlas-visualisation/static/js/runtime-main.edd15b1b.js.map",
-    "static/js/2.d15b1c2a.chunk.js": "/atlas-visualisation/static/js/2.d15b1c2a.chunk.js",
-    "static/js/2.d15b1c2a.chunk.js.map": "/atlas-visualisation/static/js/2.d15b1c2a.chunk.js.map",
-    "static/js/3.8704596a.chunk.js": "/atlas-visualisation/static/js/3.8704596a.chunk.js",
-    "static/js/3.8704596a.chunk.js.map": "/atlas-visualisation/static/js/3.8704596a.chunk.js.map",
+    "main.css": "/atlas-visualisation/static/css/main.d1a3e991.chunk.css",
+    "main.js": "/atlas-visualisation/static/js/main.d72f22f4.chunk.js",
+    "main.js.map": "/atlas-visualisation/static/js/main.d72f22f4.chunk.js.map",
+    "runtime-main.js": "/atlas-visualisation/static/js/runtime-main.2c469b4e.js",
+    "runtime-main.js.map": "/atlas-visualisation/static/js/runtime-main.2c469b4e.js.map",
+    "static/js/2.e8c14a28.chunk.js": "/atlas-visualisation/static/js/2.e8c14a28.chunk.js",
+    "static/js/2.e8c14a28.chunk.js.map": "/atlas-visualisation/static/js/2.e8c14a28.chunk.js.map",
+    "static/js/3.5fd5c85d.chunk.js": "/atlas-visualisation/static/js/3.5fd5c85d.chunk.js",
+    "static/js/3.5fd5c85d.chunk.js.map": "/atlas-visualisation/static/js/3.5fd5c85d.chunk.js.map",
     "index.html": "/atlas-visualisation/index.html",
-    "static/css/main.a617e044.chunk.css.map": "/atlas-visualisation/static/css/main.a617e044.chunk.css.map",
-    "static/js/2.d15b1c2a.chunk.js.LICENSE.txt": "/atlas-visualisation/static/js/2.d15b1c2a.chunk.js.LICENSE.txt",
-    "static/media/logo.6ce24c58.svg": "/atlas-visualisation/static/media/logo.6ce24c58.svg"
+    "static/css/main.d1a3e991.chunk.css.map": "/atlas-visualisation/static/css/main.d1a3e991.chunk.css.map",
+    "static/js/2.e8c14a28.chunk.js.LICENSE.txt": "/atlas-visualisation/static/js/2.e8c14a28.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.edd15b1b.js",
-    "static/js/2.d15b1c2a.chunk.js",
-    "static/css/main.a617e044.chunk.css",
-    "static/js/main.1e992b97.chunk.js"
+    "static/js/runtime-main.2c469b4e.js",
+    "static/js/2.e8c14a28.chunk.js",
+    "static/css/main.d1a3e991.chunk.css",
+    "static/js/main.d72f22f4.chunk.js"
   ]
 }
