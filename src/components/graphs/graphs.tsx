@@ -84,7 +84,11 @@ const Graphs = (props: React.HTMLAttributes<HTMLDivElement>) => {
   ];
 
   return (
-    <div className={`${props.className && props.className} w-full`}>
+    <div
+      className={`${
+        props.className && props.className
+      } w-full overflow-x-hidden`}
+    >
       <div className={`flex justify-evenly align-top gap-x-2`}>
         {vgGraphs.map(({ btnDesc }, i) => (
           <button

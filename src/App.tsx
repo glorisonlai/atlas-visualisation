@@ -1,11 +1,10 @@
 import Sidebar from "./components/sidebar/sidebar";
 import Graphs from "./components/graphs/graphs";
 import Heading from "components/heading";
-import React from "react";
 
 function App() {
   return (
-    <div className={"bg-gray-100 pt-2 pl-2 pr-2"}>
+    <div className={"bg-gray-100"}>
       <div className="fill-current text-blue-300 z-0 absolute w-full">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +46,7 @@ function App() {
 
       <footer
         className={
-          "footer bg-white relative mt-10 pt-2 border-b-2 border-blue-300 text-center bottom-0"
+          "footer bg-white relative mt-10 pt-2 border-b-4 border-blue-300 text-center"
         }
       >
         <div className="container mx-auto px-6 flex flex-col">

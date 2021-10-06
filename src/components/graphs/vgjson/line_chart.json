@@ -4,7 +4,7 @@
   "title": "Yearly Temperature Fluctuation",
   "data": {
     "format": { "type": "csv" },
-    "url": "atlas-visualisation/Environment_Temperature_change_E_All_Data_Cleaned.csv"
+    "url": "https://glorisonlai.github.io/atlas-visualisation/Environment_Temperature_change_E_All_Data_Cleaned.csv"
   },
   "transform": [
     { "filter": { "field": "Area", "equal": "World" } },
