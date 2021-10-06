@@ -9,6 +9,7 @@
   "transform": [
     { "filter": { "field": "Area", "equal": "World" } },
     { "filter": { "field": "Months Code", "equal": "7020" } },
+    { "filter": { "field": "Element Code", "equal": "7271" } },
     {
       "fold": [
         "Y1961",
@@ -72,40 +73,11 @@
         "Y2019"
       ],
       "as": ["Year", "Change"]
-    },
-    {
-      "pivot": "Element Code",
-      "groupby": ["Year"],
-      "value": "Change"
-    },
-    {
-      "calculate": "datum['7271'] - datum['6078']",
-      "as": "tempLo"
-    },
-    {
-      "calculate": "datum['7271'] + datum['6078']",
-      "as": "tempHi"
     }
   ],
+  "mark": "line",
   "encoding": {
-    "x": { "field": "Year", "type": "nominal" }
-  },
-  "layer": [
-    {
-      "mark": { "type": "area", "opacity": 0.3, "color": "#85C5A6" },
-      "encoding": {
-        "y": { "field": "tempHi" },
-        "y2": { "field": "tempLo" }
-      }
-    },
-    {
-      "mark": { "type": "line" },
-      "encoding": {
-        "y": {
-          "aggregate": "average",
-          "field": "7271"
-        }
-      }
-    }
-  ]
+    "x": { "field": "Year", "type": "nominal" },
+    "y": { "field": "Change", "type": "quantitative" }
+  }
 }
