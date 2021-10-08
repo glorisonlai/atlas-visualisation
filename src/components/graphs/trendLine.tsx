@@ -7,6 +7,7 @@ type LineActions = {
   getLocations?: () => string[];
   changeLineLocation?: (area: string) => void;
   changeCumLocation?: (area: string) => void;
+  changeSummerLocation?: (area: string) => void;
 };
 
 const Trendline = (props: React.HTMLAttributes<HTMLElement>) => {
@@ -48,10 +49,9 @@ const Trendline = (props: React.HTMLAttributes<HTMLElement>) => {
       .then(function (res: any) {
         removeVegaEls();
         console.log("Summer-Winter", res);
-
         setActions((actions) => ({
           ...actions,
-          changeCumLocation: res.view._bind[0].state.update as (
+          changeSummerLocation: res.view._bind[0].state.update as (
             area: string
           ) => void,
         }));
@@ -62,6 +62,7 @@ const Trendline = (props: React.HTMLAttributes<HTMLElement>) => {
   useEffect(() => {
     !!actions.changeLineLocation && actions.changeLineLocation(area);
     !!actions.changeCumLocation && actions.changeCumLocation(area);
+    !!actions.changeSummerLocation && actions.changeSummerLocation(area);
   }, [area, actions]);
 
   return (
@@ -78,7 +79,7 @@ const Trendline = (props: React.HTMLAttributes<HTMLElement>) => {
                   .map((area) => ({ name: area, value: area }), {})
               : [{ name: "World", value: "World" }]
           }
-          value="World"
+          value={area}
           placeholder="Search Area..."
           search
           filterOptions={fuzzySearch}
@@ -118,11 +119,38 @@ const Trendline = (props: React.HTMLAttributes<HTMLElement>) => {
         year by year.
       </span>
       <br />
-      <h1>Scorching Summers, Blistering Winters</h1>
+      <br />
+      <h1 className={"justify-self-center text-3xl py-2"}>
+        Scorching Summers, Blistering Winters
+      </h1>
+      <div className={"flex flex-row py-2 justify-center"}>
+        <h1 className={"text-2xl pr-4"}>Area</h1>
+        <SelectSearch
+          options={
+            actions.getLocations
+              ? actions
+                  .getLocations()
+                  .map((area) => ({ name: area, value: area }), {})
+              : [{ name: "World", value: "World" }]
+          }
+          value={area}
+          placeholder="Search Area..."
+          search
+          filterOptions={fuzzySearch}
+          onChange={(newArea) =>
+            setArea(typeof newArea == "string" ? newArea : "World")
+          }
+        />
+      </div>
       <div>
         <div id="sd-temp" />
       </div>
+      <span>
+        While temperatures continue to increase, ironically Winters get even
+        colder over time.
+      </span>
     </div>
   );
 };
+
 export default Trendline;

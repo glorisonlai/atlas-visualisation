@@ -1,12 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Yearly Temperature Fluctuation",
+  "width": 800,
+  "height": 300,
+  "title": "Peak Summer, compared to Peak Winter",
   "data": {
     "format": { "type": "csv" },
-    "url": "https://glorisonlai.github.io/atlas-visualisation/Environment_Temperature_change_E_All_Data_Cleaned.csv"
+    "url": "atlas-visualisation/Environment_Temperature_change_E_All_Data_Cleaned.csv"
   },
-  "width": 800,
-  "height": 400,
   "params": [
     {
       "name": "country",
@@ -269,12 +269,6 @@
   ],
   "transform": [
     { "filter": { "param": "country" } },
-    { "filter": { "field": "Element Code", "equal": "7271" } },
-    {
-      "calculate": "toNumber(substring(datum['Months Code'], 2)) - 1",
-      "as": "monthId"
-    },
-    { "filter": { "field": "Month Code", "equal": "7020" } },
     {
       "fold": [
         "Y1961",
@@ -340,24 +334,20 @@
       "as": ["Year", "Change"]
     },
     {
-      "calculate": "datetime(substring(datum.Year, 1), toString(datum.monthId))",
-      "as": "TempYear"
-    },
-    {
-      "pivot": "Element Code",
-      "groupby": ["Year"],
+      "pivot": "Months Code",
+      "groupby": ["Area", "Year"],
       "value": "Change"
     },
     {
-      "calculate": "datum['7271'] - datum['6078']",
-      "as": "tempLo"
+      "calculate": "datum['7001'] - datum['7002'] - datum['7003'] - datum['7004'] - datum['7005'] - datum['7006'] - datum['7007']",
+      "as": "winter-desc"
     },
     {
-      "calculate": "datum['7271'] + datum['6078']",
-      "as": "tempHi"
+      "calculate": "datetime(substring(datum.Year, 1), 1)",
+      "as": "TempYear"
     }
   ],
-  "mark": { "type": "line" },
+  "mark": { "type": "line", "color": "#4d79a6", "strokeWidth": 3 },
   "encoding": {
     "x": {
       "field": "TempYear",
@@ -383,21 +373,11 @@
         "tickCount": 10
       }
     },
-    "y": {
-      "field": "tempHi",
-      "type": "quantitative"
-    },
+    "y": { "field": "7001", "type": "quantitative", "title": "Winter" },
     "y2": {
-      "field": "tempLo",
-      "type": "quantitative"
-    },
-    "tooltip": [
-      {
-        "field": "Change",
-        "type": "nominal",
-        "title": "Degrees",
-        "format": ".2f"
-      }
-    ]
+      "field": "winter-desc",
+      "type": "quantitative",
+      "title": "Summer Change"
+    }
   }
 }
