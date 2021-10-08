@@ -6,6 +6,7 @@
     "url": "https://glorisonlai.github.io/atlas-visualisation/Environment_Temperature_change_E_All_Data_Cleaned.csv"
   },
   "width": 800,
+  "height": 400,
   "params": [
     {
       "name": "country",
@@ -268,8 +269,12 @@
   ],
   "transform": [
     { "filter": { "param": "country" } },
-    { "filter": { "field": "Months Code", "equal": "7020" } },
     { "filter": { "field": "Element Code", "equal": "7271" } },
+    {
+      "calculate": "toNumber(substring(datum['Months Code'], 2)) - 1",
+      "as": "monthId"
+    },
+    { "filter": { "field": "monthId", "lt": 12 } },
     {
       "fold": [
         "Y1961",
@@ -335,7 +340,7 @@
       "as": ["Year", "Change"]
     },
     {
-      "calculate": "datetime(substring(datum.Year, 1), 1)",
+      "calculate": "datetime(substring(datum.Year, 1), toString(datum.monthId))",
       "as": "TempYear"
     }
   ],
@@ -361,7 +366,7 @@
           },
           "value": [2, 2]
         },
-        "labelExpr": "timeFormat(datum.value, '%Y')",
+        "labelExpr": "timeFormat(datum.value, '%b %Y')",
         "tickCount": 10
       }
     },

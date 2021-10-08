@@ -52,9 +52,7 @@ const Trendline = (props: React.HTMLAttributes<HTMLElement>) => {
 
   return (
     <div
-      className={`${
-        props.className && props.className
-      } flex flex-col min-h-screen w-map`}
+      className={`${props.className && props.className} flex flex-col w-map`}
     >
       <div className={"flex flex-row py-2 justify-center"}>
         <h1 className={"text-2xl pr-4"}>Area</h1>
@@ -96,10 +94,9 @@ const Trendline = (props: React.HTMLAttributes<HTMLElement>) => {
       <br />
       <span>
         Since 1985, the average global temperature fluctuations has consistently
-        been steadily increasing. This is causing our global temperatures to
+        been steadily increasing. This is causing global temperatures to
         exponetially increase, year by year.
       </span>
-      <span>Select an area for a localised search.</span>
     </div>
   );
 };

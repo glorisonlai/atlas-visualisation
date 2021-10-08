@@ -6,6 +6,7 @@
     "url": "https://glorisonlai.github.io/atlas-visualisation/Environment_Temperature_change_E_All_Data_Cleaned.csv"
   },
   "width": 800,
+  "height": 400,
   "params": [
     {
       "name": "country",
@@ -364,20 +365,20 @@
           },
           "value": [2, 2]
         },
-        "labelExpr": "timeFormat(datum.value, '%Y')",
+        "labelExpr": "timeFormat(datum.value, '%b %Y')",
         "tickCount": 10
       }
     },
     "y": {
       "field": "cum",
       "type": "quantitative",
-      "title": "Degrees °C: "
+      "title": "Degrees °C"
     },
     "tooltip": [
       {
         "field": "cum",
         "type": "nominal",
-        "title": "Increase in Temperature: ",
+        "title": "Increase in Temperature",
         "format": ".2f"
       }
     ]
