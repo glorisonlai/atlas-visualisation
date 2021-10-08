@@ -3,6 +3,7 @@ import vegaEmbedModule from "vega-embed";
 import Barchart from "./barChart";
 import Trendline from "./trendLine";
 import WorldMap from "./worldMap";
+import { Menu } from "@headlessui/react";
 
 type VgChart = {
   element: React.ReactElement<any, any>;
@@ -69,6 +70,60 @@ const Graphs = (props: React.HTMLAttributes<HTMLDivElement>) => {
           {element}
         </div>
       ))}
+      <br />
+      <h1>Call to Action</h1>
+      <h2>
+        While the effects of global warming are dangerously clear, the actions
+        being taken to fix climate change are few and far between
+      </h2>
+      <span>
+        The best thing you can do as an individual is to learn more about
+        Climate Change.
+      </span>
+      <span>Provided below are resources for additional reading:</span>
+      <ul></ul>
+      <Menu>
+        <Menu.Button>Donate</Menu.Button>
+        <Menu.Items>
+          <Menu.Item>
+            {({ active }) => (
+              <div>
+                <h3>
+                  Before donating to a cause, make sure you understand where
+                  your money is going.
+                </h3>
+                <span>
+                  This includes researching the company, its mission statement,
+                  and the campaign statement for yourself, before making an
+                  informed decision about whether they best align with your
+                  interests, before contributing to their cause.
+                </span>
+                <span>Below are some organisations to start with:</span>
+                <Menu>
+                  <Menu.Button>Australia</Menu.Button>
+                  <Menu.Items>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <a>Australian Conservation Foundation</a>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <a>
+                          Breakthrough – National Centre for Climate Restoration
+                        </a>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => <a>Climate Council</a>}
+                    </Menu.Item>
+                  </Menu.Items>
+                </Menu>
+              </div>
+            )}
+          </Menu.Item>
+        </Menu.Items>
+      </Menu>
     </div>
   );
 };

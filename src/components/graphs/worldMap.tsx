@@ -120,7 +120,7 @@ const WorldMap = (props: React.HTMLAttributes<HTMLElement>) => {
           &gt;
         </button>
       </div>
-      <div className={"flex flex-nowrap gap-x-5 p-y-2 items-center py-2"}>
+      <div className={"flex justify-start gap-x-5 p-y-2 py-2"}>
         <div>
           <input
             type="checkbox"
@@ -148,6 +148,8 @@ const WorldMap = (props: React.HTMLAttributes<HTMLElement>) => {
             Step size
           </label>
         </div>
+
+        <span className={"ml-auto"}>Drag to scroll through years</span>
       </div>
       <div className={"my-2 relative w-map"}>
         <div id="chloropleth" className={"relative"}>

@@ -274,7 +274,7 @@
       "calculate": "toNumber(substring(datum['Months Code'], 2)) - 1",
       "as": "monthId"
     },
-    { "filter": { "field": "monthId", "lt": 12 } },
+    { "filter": { "field": "Month Code", "equal": "7020" } },
     {
       "fold": [
         "Y1961",
@@ -342,6 +342,19 @@
     {
       "calculate": "datetime(substring(datum.Year, 1), toString(datum.monthId))",
       "as": "TempYear"
+    },
+    {
+      "pivot": "Element Code",
+      "groupby": ["Year"],
+      "value": "Change"
+    },
+    {
+      "calculate": "datum['7271'] - datum['6078']",
+      "as": "tempLo"
+    },
+    {
+      "calculate": "datum['7271'] + datum['6078']",
+      "as": "tempHi"
     }
   ],
   "mark": { "type": "line" },
@@ -371,9 +384,12 @@
       }
     },
     "y": {
-      "field": "Change",
-      "type": "quantitative",
-      "title": "Degrees °C"
+      "field": "tempHi",
+      "type": "quantitative"
+    },
+    "y2": {
+      "field": "tempLo",
+      "type": "quantitative"
     },
     "tooltip": [
       {

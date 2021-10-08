@@ -43,6 +43,20 @@ const Trendline = (props: React.HTMLAttributes<HTMLElement>) => {
         }));
       })
       .catch(console.error);
+
+    vegaEmbedModule("#sd-temp", require("./vgjson/sd.json"))
+      .then(function (res: any) {
+        removeVegaEls();
+        console.log("Summer-Winter", res);
+
+        setActions((actions) => ({
+          ...actions,
+          changeCumLocation: res.view._bind[0].state.update as (
+            area: string
+          ) => void,
+        }));
+      })
+      .catch(console.error);
   }, []);
 
   useEffect(() => {
@@ -94,9 +108,20 @@ const Trendline = (props: React.HTMLAttributes<HTMLElement>) => {
       <br />
       <span>
         Since 1985, the average global temperature fluctuations has consistently
-        been steadily increasing. This is causing global temperatures to
-        exponetially increase, year by year.
+        been steadily increasing. This is causing global temperatures to&nbsp;
+        <span
+          className={"underline text-blue-500 cursor-pointer"}
+          onClick={() => setShowCumGraph(true)}
+        >
+          exponetially increase,
+        </span>{" "}
+        year by year.
       </span>
+      <br />
+      <h1>Scorching Summers, Blistering Winters</h1>
+      <div>
+        <div id="sd-temp" />
+      </div>
     </div>
   );
 };
