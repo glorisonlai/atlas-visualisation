@@ -1,10 +1,11 @@
 import Sidebar from "./components/sidebar/sidebar";
 import Graphs from "./components/graphs/graphs";
 import Heading from "components/heading";
+import React from "react";
 
 function App() {
   return (
-    <div className={"bg-gray-100"}>
+    <React.Fragment>
       <div className="fill-current text-blue-300 z-0 absolute w-full">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -43,10 +44,15 @@ function App() {
           {/* <Sidebar className="fixed" /> */}
         </div>
       </div>
-
+      <button
+        className={"fixed bg-gray-500 opacity-50 h-10 w-10 to"}
+        onClick={() => window.scrollTo(0, 0)}
+      >
+        UP
+      </button>
       <footer
         className={
-          "footer bg-white relative mt-10 pt-2 border-b-4 border-blue-300 text-center"
+          "footer bg-gray-100 mt-10 pt-2 border-b-4 border-blue-300 bottom-10 right-10"
         }
       >
         <div className="container mx-auto px-6 flex flex-col">
@@ -56,7 +62,7 @@ function App() {
           </span>
         </div>
       </footer>
-    </div>
+    </React.Fragment>
   );
 }
 

@@ -9,7 +9,7 @@ type VgChart = {
   btnDesc: string;
 };
 
-const removeVegaEls = () => {
+export const removeVegaEls = () => {
   const vegaEls = [
     ...Array.from(document.getElementsByClassName("vega-bindings")),
     ...Array.from(document.getElementsByTagName("details")),
@@ -19,66 +19,27 @@ const removeVegaEls = () => {
 
 const Graphs = (props: React.HTMLAttributes<HTMLDivElement>) => {
   const [screenId, setScreenId] = useState(0);
-  var blah: any;
 
   useEffect(() => {
-    vegaEmbedModule("#line-chart", require("./vgjson/line_chart.json"))
-      .then(function (res) {
-        removeVegaEls();
-        console.log(res);
-      })
-      .catch(console.error);
-
     vegaEmbedModule("#bar-chart", require("./vgjson/bar_chart.json"))
       .then(function (res) {
         removeVegaEls();
-        console.log(res);
-      })
-      .catch(console.error);
-
-    vegaEmbedModule("#chloropleth", require("./vgjson/chloropleth.json"))
-      .then(function (res: any) {
-        removeVegaEls();
-        console.log(res);
-        vgGraphActions.set(
-          "ChangeYear",
-          res.view._bind[0].state.update as VoidFunction
-        );
+        console.log("Bar Chart", res);
       })
       .catch(console.error);
   }, []);
 
-  const vgGraphActions: Map<string, VoidFunction> = new Map();
-
   const vgGraphs: VgChart[] = [
     {
-      element: (
-        <WorldMap
-          key="graph-1"
-          className={`${screenId !== 0 && "hidden"}`}
-          actions={vgGraphActions}
-        />
-      ),
+      element: <WorldMap />,
       btnDesc: "World Map",
     },
     {
-      element: (
-        <Barchart
-          key="graph-2"
-          className={`${screenId !== 1 && "hidden"}`}
-          actions={vgGraphActions}
-        />
-      ),
+      element: <Barchart />,
       btnDesc: "Bar chart",
     },
     {
-      element: (
-        <Trendline
-          key="graph-3"
-          className={`${screenId !== 2 && "hidden"}`}
-          actions={vgGraphActions}
-        />
-      ),
+      element: <Trendline />,
       btnDesc: "Trends",
     },
   ];
@@ -93,9 +54,9 @@ const Graphs = (props: React.HTMLAttributes<HTMLDivElement>) => {
         {vgGraphs.map(({ btnDesc }, i) => (
           <button
             key={`switch-graph-${i}`}
-            className={
-              "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex-1"
-            }
+            className={`${
+              screenId === i ? "bg-blue-700" : "bg-blue-500 hover:bg-blue-700"
+            } text-white font-bold py-2 px-4 rounded flex-1`}
             onClick={() => setScreenId(i)}
           >
             {btnDesc}
@@ -103,8 +64,11 @@ const Graphs = (props: React.HTMLAttributes<HTMLDivElement>) => {
         ))}
       </div>
       <br />
-      {vgGraphs.map(({ element }, i) => element)}
-      <button onClick={() => blah(2000)} />
+      {vgGraphs.map(({ element }, i) => (
+        <div key={`screen-${i}`} className={`${screenId !== i && "hidden"}`}>
+          {element}
+        </div>
+      ))}
     </div>
   );
 };

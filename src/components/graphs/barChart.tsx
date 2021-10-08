@@ -1,6 +1,4 @@
-import { ChartProp } from "types/graphProps";
-
-const Barchart = (props: ChartProp<HTMLElement>) => {
+const Barchart = (props: React.HTMLAttributes<HTMLElement>) => {
   return (
     <div className={`${props.className && props.className}`}>
       <div id="bar-chart" />

@@ -1,20 +1,42 @@
 import { useEffect, useRef, useState } from "react";
 import ScrollContainer from "react-indiana-drag-scroll";
-import { ChartProp } from "types/graphProps";
+import { mapText } from "components/constants";
+import vegaEmbedModule from "vega-embed";
+import { removeVegaEls } from "./graphs";
 
-const WorldMap = (props: ChartProp<HTMLElement>) => {
+type MapActions = {
+  changeYear?: (year: string) => void;
+};
+
+const WorldMap = (props: React.HTMLAttributes<HTMLElement>) => {
   const [showYear, setShowYear] = useState<string>("1961");
   const [autoPlay, setAutoPlay] = useState<boolean>(true);
   const [stepSize, setStepSize] = useState<number>(5);
-  const changeYear = props.actions.get("ChangeYear");
+  const [actions, setActions] = useState<MapActions>({});
+  // const actions = useRef<MapActions>({});
+
   const scrollRef: any = useRef(null);
   const stepIntervalRef: any = useRef(null);
 
   useEffect(() => {
-    !!changeYear && changeYear(showYear);
+    vegaEmbedModule("#chloropleth", require("./vgjson/chloropleth.json"))
+      .then(function (res: any) {
+        removeVegaEls();
+        console.log("Cloropleth", res);
+
+        setActions((actions) => ({
+          ...actions,
+          changeYear: res.view._bind[0].state.update as (year: string) => void,
+        }));
+      })
+      .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    !!actions.changeYear && actions.changeYear(showYear);
     !!scrollRef.current &&
       scrollRef.current.scrollTo((parseInt(showYear) - 1968) * 54.5 + 15, 0);
-  }, [showYear, changeYear]);
+  }, [showYear, actions]);
 
   useEffect(() => {
     clearInterval(stepIntervalRef.current);
@@ -35,6 +57,9 @@ const WorldMap = (props: ChartProp<HTMLElement>) => {
         props.className && props.className
       } flex flex-col justify-center w-chart`}
     >
+      <div className="flex justify-center group-hover:justify-center text-2xl pb-1">
+        Year
+      </div>
       <div className={"flex flex-evenly flex-nowrap gap-x-1"}>
         <button
           className={`${
@@ -95,11 +120,7 @@ const WorldMap = (props: ChartProp<HTMLElement>) => {
           &gt;
         </button>
       </div>
-      <div
-        className={
-          "flex flex-center flex-nowrap gap-x-5 p-y-2 items-center py-2"
-        }
-      >
+      <div className={"flex flex-nowrap gap-x-5 p-y-2 items-center py-2"}>
         <div>
           <input
             type="checkbox"
@@ -128,15 +149,24 @@ const WorldMap = (props: ChartProp<HTMLElement>) => {
           </label>
         </div>
       </div>
-      <div className={"my-2"}>
-        <div id="chloropleth" />
+      <div className={"my-2 relative w-map"}>
+        <div id="chloropleth" className={"relative"}>
+          <svg
+            className="animate-spin h-5 w-5 mr-3 bg-gray-400 absolute top-1/2 left-1/2"
+            viewBox="0 0 24 24"
+          ></svg>
+        </div>
+        <span className={` break-words absolute top-150 px-10 text-lg`}>
+          {
+            mapText[
+              Math.min(
+                mapText.length - 1,
+                Math.max(0, Math.floor((parseInt(showYear) - 1961) / 10))
+              )
+            ]
+          }
+        </span>
       </div>
-      <br />
-      <span></span>
-      <button
-        id="eh"
-        onClick={() => console.log(props.actions.get("ChangeYear")!("2000"))}
-      />
     </div>
   );
 };

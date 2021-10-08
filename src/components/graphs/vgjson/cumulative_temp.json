@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Yearly Temperature Fluctuation",
+  "title": "Cumulative Temperature Increase",
   "data": {
     "format": { "type": "csv" },
     "url": "https://glorisonlai.github.io/atlas-visualisation/Environment_Temperature_change_E_All_Data_Cleaned.csv"
@@ -337,6 +337,9 @@
     {
       "calculate": "datetime(substring(datum.Year, 1), 1)",
       "as": "TempYear"
+    },
+    {
+      "window": [{ "op": "sum", "field": "Change", "as": "cum" }]
     }
   ],
   "mark": { "type": "line" },
@@ -366,15 +369,15 @@
       }
     },
     "y": {
-      "field": "Change",
+      "field": "cum",
       "type": "quantitative",
-      "title": "Degrees °C"
+      "title": "Degrees °C: "
     },
     "tooltip": [
       {
-        "field": "Change",
+        "field": "cum",
         "type": "nominal",
-        "title": "Degrees",
+        "title": "Increase in Temperature: ",
         "format": ".2f"
       }
     ]
