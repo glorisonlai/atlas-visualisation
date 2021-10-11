@@ -85,7 +85,7 @@
       "lookup": "properties.NAME",
       "from": {
         "data": {
-          "url": "http://localhost:3000/atlas-visualisation/Environment_Temperature_change_E_All_Data_Cleaned.csv"
+          "url": "https://glorisonlai.github.io/atlas-visualisation/Environment_Temperature_change_E_All_Data_Cleaned.csv"
         },
         "key": "Area",
         "fields": [
