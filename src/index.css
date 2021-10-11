@@ -27,6 +27,7 @@
     position: relative;
     font-family: "Nunito Sans", sans-serif;
     box-sizing: border-box;
+    border: 0.125rem solid #93c4fd;
   }
 
   .select-search *,

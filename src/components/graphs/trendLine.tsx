@@ -109,7 +109,7 @@ const Trendline = (props: React.HTMLAttributes<HTMLElement>) => {
       <br />
       <span>
         Since 1985, the average global temperature fluctuations has consistently
-        been steadily increasing. This is causing global temperatures to&nbsp;
+        been steadily increasing. This is causing global temperatures to{" "}
         <span
           className={"underline text-blue-500 cursor-pointer"}
           onClick={() => setShowCumGraph(true)}

@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Yearly Temperature Fluctuation",
+  "title": "Monthly Temperature Fluctuation",
   "data": {
     "format": { "type": "csv" },
     "url": "https://glorisonlai.github.io/atlas-visualisation/Environment_Temperature_change_E_All_Data_Cleaned.csv"
@@ -376,6 +376,7 @@
       "title": "Degrees °C"
     },
     "tooltip": [
+      { "field": "TempYear", "formatType": "time" },
       {
         "field": "Change",
         "type": "nominal",

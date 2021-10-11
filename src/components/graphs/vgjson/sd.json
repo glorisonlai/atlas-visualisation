@@ -347,7 +347,7 @@
       "as": "TempYear"
     }
   ],
-  "mark": { "type": "line", "color": "#4d79a6", "strokeWidth": 3 },
+  "mark": { "type": "bar" },
   "encoding": {
     "x": {
       "field": "TempYear",
@@ -373,11 +373,14 @@
         "tickCount": 10
       }
     },
-    "y": { "field": "7001", "type": "quantitative", "title": "Winter" },
-    "y2": {
+    "y": {
       "field": "winter-desc",
       "type": "quantitative",
-      "title": "Summer Change"
-    }
+      "title": "Winter Temperature Change"
+    },
+    "tooltip": [
+      { "field": "Year", "title": "Winter" },
+      { "field": "winter-desc", "title": "Change", "format": ".2f" }
+    ]
   }
 }

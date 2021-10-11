@@ -26,7 +26,7 @@
       "lookup": "properties.NAME",
       "from": {
         "data": {
-          "url": "https://glorisonlai.github.io/atlas-visualisation/Environment_Temperature_change_E_All_Data_Cleaned.csv"
+          "url": "http://localhost:3000/atlas-visualisation/Environment_Temperature_change_E_All_Data_Cleaned.csv"
         },
         "key": "Area",
         "fields": [
@@ -177,6 +177,7 @@
         "type": "linear",
         "domain": [-1, 3],
         "range": [
+          "#3399ff",
           "#9aedff",
           "#ffff4a",
           "#ffcd00",
@@ -187,7 +188,12 @@
       }
     },
     "tooltip": [
-      { "field": "properties.NAME", "type": "nominal", "title": "Country" }
+      { "field": "properties.NAME", "type": "nominal", "title": "Country" },
+      {
+        "field": "Change",
+        "type": "quantitative",
+        "title": "2019 Change"
+      }
     ]
   }
 }
