@@ -119,7 +119,7 @@ const WorldMap = (props: React.HTMLAttributes<HTMLElement>) => {
           disabled={showYear === "2019" ? true : false}
           onClick={() => {
             if (showYear !== "2019") {
-              setShowYear((year) => createYearString(parseInt(year) + 1));
+              setShowYear((year) => createYearString(parseYear(year) + 1));
               setAutoPlay(false);
             }
           }}
