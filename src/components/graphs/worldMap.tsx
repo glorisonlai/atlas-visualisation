@@ -8,8 +8,10 @@ type MapActions = {
   changeYear?: (year: string) => void;
 };
 
+type Year = `Y${string}`;
+
 const WorldMap = (props: React.HTMLAttributes<HTMLElement>) => {
-  const [showYear, setShowYear] = useState<string>("1961");
+  const [showYear, setShowYear] = useState<Year>("Y1961");
   const [autoPlay, setAutoPlay] = useState<boolean>(true);
   const [stepSize, setStepSize] = useState<number>(5);
   const [actions, setActions] = useState<MapActions>({});
@@ -17,6 +19,10 @@ const WorldMap = (props: React.HTMLAttributes<HTMLElement>) => {
 
   const scrollRef: any = useRef(null);
   const stepIntervalRef: any = useRef(null);
+
+  const parseYear = (yearStr: Year): number => parseInt(yearStr.substring(1));
+
+  const createYearString = (year: number): Year => `Y${year.toString()}`;
 
   useEffect(() => {
     vegaEmbedModule("#chloropleth", require("./vgjson/chloropleth.json"))
@@ -35,7 +41,7 @@ const WorldMap = (props: React.HTMLAttributes<HTMLElement>) => {
   useEffect(() => {
     !!actions.changeYear && actions.changeYear(showYear);
     !!scrollRef.current &&
-      scrollRef.current.scrollTo((parseInt(showYear) - 1968) * 54.5 + 15, 0);
+      scrollRef.current.scrollTo((parseYear(showYear) - 1968) * 54.5 + 15, 0);
   }, [showYear, actions]);
 
   useEffect(() => {
@@ -44,7 +50,7 @@ const WorldMap = (props: React.HTMLAttributes<HTMLElement>) => {
       stepIntervalRef.current = setInterval(
         () =>
           setShowYear((year) =>
-            Math.min(2019, parseInt(year) + stepSize).toString()
+            createYearString(Math.min(2019, parseYear(year) + stepSize))
           ),
         5000
       );
@@ -63,14 +69,14 @@ const WorldMap = (props: React.HTMLAttributes<HTMLElement>) => {
       <div className={"flex flex-evenly flex-nowrap gap-x-1"}>
         <button
           className={`${
-            showYear !== "1961"
+            showYear !== "Y1961"
               ? "bg-blue-500 hover:bg-blue-700"
               : "bg-gray-500"
           } text-white font-bold py-2 rounded mx-1 px-1`}
           disabled={showYear === "1961" ? true : false}
           onClick={() => {
             if (showYear !== "2019") {
-              setShowYear((year) => (parseInt(year) + 1).toString());
+              setShowYear((year) => createYearString(parseInt(year) + 1));
               setAutoPlay(false);
             }
           }}
@@ -86,13 +92,13 @@ const WorldMap = (props: React.HTMLAttributes<HTMLElement>) => {
               <button
                 key={`Y${e}`}
                 className={`${
-                  e.toString() === showYear
+                  e === parseYear(showYear)
                     ? "bg-blue-500 text-white bold text-xl px-2"
                     : ""
                 } rounded p-1`}
                 onClick={() => {
-                  if (e.toString() !== showYear) {
-                    setShowYear(e.toString());
+                  if (e !== parseYear(showYear)) {
+                    setShowYear(createYearString(e));
                     setAutoPlay(false);
                   }
                 }}
@@ -105,14 +111,14 @@ const WorldMap = (props: React.HTMLAttributes<HTMLElement>) => {
 
         <button
           className={`${
-            showYear !== "2019"
+            showYear !== "Y2019"
               ? "bg-blue-500 hover:bg-blue-700"
               : "bg-gray-500"
           } text-white font-bold py-2 rounded mx-1 px-1`}
           disabled={showYear === "2019" ? true : false}
           onClick={() => {
             if (showYear !== "2019") {
-              setShowYear((year) => (parseInt(year) + 1).toString());
+              setShowYear((year) => createYearString(parseInt(year) + 1));
               setAutoPlay(false);
             }
           }}
@@ -163,7 +169,7 @@ const WorldMap = (props: React.HTMLAttributes<HTMLElement>) => {
             mapText[
               Math.min(
                 mapText.length - 1,
-                Math.max(0, Math.floor((parseInt(showYear) - 1961) / 10))
+                Math.max(0, Math.floor((parseYear(showYear) - 1961) / 10))
               )
             ]
           }
