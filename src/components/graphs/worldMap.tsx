@@ -42,21 +42,25 @@ const WorldMap = (props: React.HTMLAttributes<HTMLElement>) => {
   useEffect(() => {
     !!actions.changeYear && actions.changeYear(showYear);
     !!scrollRef.current &&
-      scrollRef.current.scrollTo((parseYear(showYear) - 1968) * 54.5 + 15, 0);
+      scrollRef.current.scrollTo({
+        left: (parseYear(showYear) - 1968) * 54.5 + 15,
+        top: 0,
+        behavior: "smooth",
+      });
   }, [showYear, actions]);
 
   useEffect(() => {
     clearInterval(stepIntervalRef.current);
-    if (autoPlay) {
+    if (autoPlay && actions.changeYear) {
       stepIntervalRef.current = setInterval(
         () =>
           setShowYear((year) =>
             createYearString(Math.min(2019, parseYear(year) + stepSize))
           ),
-        5000
+        4000
       );
     }
-  }, [autoPlay, stepSize]);
+  }, [autoPlay, stepSize, actions]);
 
   return (
     <div
