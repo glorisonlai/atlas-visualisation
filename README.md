@@ -1,6 +1,6 @@
 # Atlas Visualisation
 
-Visualisation website built with React, Tailwind and Vega-Lite
+Visualisation website built with React, Tailwind and Vega-Lite. Website is available at [glorisonlai.github.io/atlas-visualisation](https://glorisonlai.github.io/atlas-visualisation/).
 
 Written for FIT3179 Assignment 2
 
