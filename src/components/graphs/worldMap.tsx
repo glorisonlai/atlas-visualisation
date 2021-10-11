@@ -5,13 +5,13 @@ import vegaEmbedModule from "vega-embed";
 import { removeVegaEls } from "./graphs";
 
 type MapActions = {
-  changeYear?: (year: string) => void;
+  changeYear?: (year: MapYear) => void;
 };
 
-type Year = `Y${string}`;
+type MapYear = `Y${number}`;
 
 const WorldMap = (props: React.HTMLAttributes<HTMLElement>) => {
-  const [showYear, setShowYear] = useState<Year>("Y1961");
+  const [showYear, setShowYear] = useState<MapYear>("Y1961");
   const [autoPlay, setAutoPlay] = useState<boolean>(true);
   const [stepSize, setStepSize] = useState<number>(5);
   const [actions, setActions] = useState<MapActions>({});
@@ -20,9 +20,10 @@ const WorldMap = (props: React.HTMLAttributes<HTMLElement>) => {
   const scrollRef: any = useRef(null);
   const stepIntervalRef: any = useRef(null);
 
-  const parseYear = (yearStr: Year): number => parseInt(yearStr.substring(1));
+  const parseYear = (yearStr: MapYear): number =>
+    parseInt(yearStr.substring(1));
 
-  const createYearString = (year: number): Year => `Y${year.toString()}`;
+  const createYearString = (year: number): MapYear => `Y${year}`;
 
   useEffect(() => {
     vegaEmbedModule("#chloropleth", require("./vgjson/chloropleth.json"))
@@ -32,7 +33,7 @@ const WorldMap = (props: React.HTMLAttributes<HTMLElement>) => {
 
         setActions((actions) => ({
           ...actions,
-          changeYear: res.view._bind[0].state.update as (year: string) => void,
+          changeYear: res.view._bind[0].state.update as (year: MapYear) => void,
         }));
       })
       .catch(console.error);
@@ -76,7 +77,7 @@ const WorldMap = (props: React.HTMLAttributes<HTMLElement>) => {
           disabled={showYear === "1961" ? true : false}
           onClick={() => {
             if (showYear !== "2019") {
-              setShowYear((year) => createYearString(parseInt(year) + 1));
+              setShowYear((year) => createYearString(parseYear(year) + 1));
               setAutoPlay(false);
             }
           }}
