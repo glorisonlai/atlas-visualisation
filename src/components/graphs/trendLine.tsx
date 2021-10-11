@@ -16,7 +16,7 @@ const Trendline = (props: React.HTMLAttributes<HTMLElement>) => {
   const [showCumGraph, setShowCumGraph] = useState<boolean>(false);
 
   useEffect(() => {
-    vegaEmbedModule("#line-chart", require("./vgjson/line_chart.json"))
+    vegaEmbedModule("#line-chart", require("./vgjson/monthly_temp.json"))
       .then((res: any) => {
         removeVegaEls();
         console.log("Fluctuations", res);
@@ -45,7 +45,7 @@ const Trendline = (props: React.HTMLAttributes<HTMLElement>) => {
       })
       .catch(console.error);
 
-    vegaEmbedModule("#sd-temp", require("./vgjson/sd.json"))
+    vegaEmbedModule("#sd-temp", require("./vgjson/winter.json"))
       .then(function (res: any) {
         removeVegaEls();
         console.log("Summer-Winter", res);
