@@ -8,6 +8,8 @@ Authored by Sevgi SY
 
 Last updated 2020-12-25
 
+Some changes were made, including the removal of some columns, and renaming of Country names to comply with Vega-Lite TopoJson
+
 ## Files
 
 - `Environment_Temperature_change_E_All_Data_NOFLAG.csv` - Yearly temperature change

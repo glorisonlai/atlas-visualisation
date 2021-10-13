@@ -1,4 +1,7 @@
 import csv
+"""
+Simple Python script to quickly parse relevant columns
+"""
 
 with open('./Environment_Temperature_change_E_All_Data_Cleaned.csv', newline='\n') as in_file:
 	lines = csv.reader(in_file, delimiter=',')
