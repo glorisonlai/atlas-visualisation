@@ -3,7 +3,7 @@
   "title": "Monthly Temperature Fluctuation",
   "data": {
     "format": { "type": "csv" },
-    "url": "https://glorisonlai.github.io/atlas-visualisation/Environment_Temperature_change_E_All_Data_Cleaned.csv"
+    "url": "https://raw.githubusercontent.com/glorisonlai/atlas-visualisation/main/data/Environment_Temperature_change_E_All_Data_Cleaned.csv"
   },
   "width": 800,
   "height": 400,

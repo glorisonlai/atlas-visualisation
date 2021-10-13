@@ -85,7 +85,7 @@
       "lookup": "properties.NAME",
       "from": {
         "data": {
-          "url": "https://glorisonlai.github.io/atlas-visualisation/Environment_Temperature_change_E_All_Data_Cleaned.csv"
+          "url": "https://raw.githubusercontent.com/glorisonlai/atlas-visualisation/main/data/Environment_Temperature_change_E_All_Data_Cleaned.csv"
         },
         "key": "Area",
         "fields": [
@@ -225,6 +225,8 @@
   ],
 
   "encoding": {
+    "strokeWidth": { "value": 0.5 },
+    "stroke": { "value": "#444" },
     "color": {
       "field": "Change",
       "title": "Degrees °C",
