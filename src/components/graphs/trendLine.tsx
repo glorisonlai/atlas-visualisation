@@ -123,6 +123,10 @@ const Trendline = (props: React.HTMLAttributes<HTMLElement>) => {
       <h1 className={"justify-self-center text-3xl py-2"}>
         Scorching Summers, Blistering Winters
       </h1>
+      <span>
+        While temperatures continue to increase, ironically Winters get even
+        colder over time.
+      </span>
       <div className={"flex flex-row py-2 justify-center"}>
         <h1 className={"text-2xl pr-4"}>Area</h1>
         <SelectSearch
@@ -145,10 +149,6 @@ const Trendline = (props: React.HTMLAttributes<HTMLElement>) => {
       <div>
         <div id="sd-temp" />
       </div>
-      <span>
-        While temperatures continue to increase, ironically Winters get even
-        colder over time.
-      </span>
     </div>
   );
 };

@@ -160,7 +160,7 @@ const WorldMap = (props: React.HTMLAttributes<HTMLElement>) => {
           </label>
         </div>
 
-        <span className={"ml-auto"}>Drag to scroll through years</span>
+        <span className={"ml-auto pr-10"}>Drag to scroll through years</span>
       </div>
       <div className={"my-2 relative w-map"}>
         <div id="chloropleth" className={"relative"}>

@@ -1,6 +1,8 @@
 # Atlas Visualisation
 
-Visualisation website built with React, Tailwind and Vega-Lite. Website is available at [glorisonlai.github.io/atlas-visualisation](https://glorisonlai.github.io/atlas-visualisation/).
+Visualisation website built with React, Tailwind and Vega-Lite.
+
+Website is available at [glorisonlai.github.io/atlas-visualisation](https://glorisonlai.github.io/atlas-visualisation/).
 
 Written for FIT3179 Assignment 2
 
@@ -11,7 +13,6 @@ Written for FIT3179 Assignment 2
 Data is sourced from Kaggle, authored by Sevgi SY. Available [here](https://www.kaggle.com/sevgisarac/temperature-change).
 
 - A copy of the dataset is stored in `/data`
-- The public facing data used in the website is inside `/public`
 
 ### VGJson
 

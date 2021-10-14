@@ -71,7 +71,19 @@ const Graphs = (props: React.HTMLAttributes<HTMLDivElement>) => {
         Climate Change.
       </span>
       <span>Provided below are resources for additional reading:</span>
-      <ul></ul>
+      <ul className="list-disc">
+        <li className="">
+          <a
+            className="text-blue-500 underline dot"
+            href="https://www.nature.com/articles/s41558-019-0666-7?fbclid=IwAR0Mztn8CrswJytkPbFtJaj9Zw3pjkx5J9n7RMFjoS88NozWhDFqJOsQewY"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Climate change now detectable from any single day of weather at
+            global scale (2020)
+          </a>
+        </li>
+      </ul>
       <div className="w-full text-left">
         <Menu as="div" className="relative inline-block text-left w-full">
           <Menu.Button
