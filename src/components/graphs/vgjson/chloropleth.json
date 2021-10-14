@@ -5,7 +5,7 @@
   "height": 600,
   "projection": { "type": "equirectangular" },
   "data": {
-    "url": "https://raw.githubusercontent.com/KaneSec/vega_lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
+    "url": "https://raw.githubusercontent.com/glorisonlai/atlas-visualisation/main/data/ne_110m_admin_0_countries.topojson",
     "format": { "type": "topojson", "feature": "ne_110m_admin_0_countries" }
   },
   "params": [
